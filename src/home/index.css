@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+  background-color: #222;
+  color: white;
+  height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 1s ease alternate-reverse;
+  height: 150px;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.header {
+  position: relative;
+}
+
+.header:hover::after {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  transform: translateX(50%);
+  display: block;
+  content: 'Design by Va';
+  color: cornsilk;
+  font-size: 20px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.dropArea {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 2px dashed chartreuse;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.dropArea:hover {
+  border-color: cornflowerblue;
+}
+
+.dropArea .anticon {
+  margin-right: 12px;
+}
+
+.uploadInput {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.m-r32 {
+  margin-right: 32px;
+}
+
+.formItem {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.formItem > span {
+  flex-shrink: 0;
+  flex-basis: 80px;
+  font-size: 18px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(-15deg); }
+  to { transform: rotate(15deg); }
+}
