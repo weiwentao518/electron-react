@@ -1,7 +1,17 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import * as obj from '../common/module';
+import logo from '../logo.svg';
+import '../common/other';
 import './App.css';
 
+setTimeout(() => {
+  console.warn(obj.age)
+}, 1000)
+
 function App() {
+  useEffect(() => {
+    console.log(obj.age)
+  }, [])
   return (
     <div className="App">
       <header className="App-header">

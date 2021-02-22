@@ -35,12 +35,15 @@ const TITLE_STYLE = {
   }
 }
 
+const month = new Date().getMonth() + 1
+
 const HOME = () => {
   const [list, setList] = useState([])
   const [users, setUsers] = useState([])
   const [disable, setDisable] = useState(true)
   const [visible, setVisible] = useState(false)
   const [fileName, setFileName] = useState('')
+  const [outputName, setOutputName] = useState('')
 
   // 处理上传表格的数据
   const handleXLSXData = event => {
@@ -68,9 +71,14 @@ const HOME = () => {
         })
       const nameMap = {}
       let arr = [...rows.values()]
-        .filter(item => Boolean(item.T) && Number(item.T) >= 600)
-        .filter(item => item.J.indexOf('补卡') === -1 && item.L.indexOf('补卡') === -1)
+        .filter(item => Boolean(item.X) && Number(item.X) >= 600) // 筛选出>=10小时的天数
+        .filter(item => item.J.indexOf('补卡') === -1 && item.L.indexOf('补卡') === -1) // 过滤掉含补卡的
 
+      // 设置项目名
+      const teamName = arr[0] && arr[0].B && arr[0].B.split('--') && arr[0].B.split('--')[1]
+      if (teamName) {
+        setOutputName(`${teamName}__${month}月餐补.xlsx`)
+      }
       arr = arr
         .map(item => {
           if (!nameMap[item.A]) {
@@ -298,7 +306,7 @@ const HOME = () => {
       for (let i=0; i!==s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
       return buf;
     }
-    saveAs(blob, '团队餐补统计.xlsx')
+    saveAs(blob, outputName || `xxx团队__${month}月餐补统计.xlsx`)
   }
 
   function saveAs (url, saveName) {
